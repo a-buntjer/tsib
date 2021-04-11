@@ -13,7 +13,7 @@ import math
 import numpy as np
 import pandas as pd
 
-import tsib.data
+from tsib.data import PATH
 import tsib
 import re
 import warnings
@@ -50,7 +50,7 @@ def readTMY(filepath=os.path.join("TMY", "Germany DEU Koln (INTL).csv")):
     """
     # get data
     data = pd.read_csv(
-        os.path.join(tsib.data.PATH, "weatherdata", filepath),
+        os.path.join(PATH, "weatherdata", filepath),
         skiprows=([0, 1]),
         sep=",",
     )
@@ -61,7 +61,7 @@ def readTMY(filepath=os.path.join("TMY", "Germany DEU Koln (INTL).csv")):
         columns={"Beam": "DNI", "Diffuse": "DHI", "Tdry": "T", "Wspd": "WS"}
     )
     location_data = pd.read_csv(
-        os.path.join(tsib.data.PATH, "profiles", filepath), nrows=1, sep=","
+        os.path.join(PATH, "profiles", filepath), nrows=1, sep=","
     )
 
     location = {
@@ -89,7 +89,7 @@ def readTRY_new(year=2010, **kwargs):
     weather_type = kwargs.get("weather_type", "mean")
     assert weather_type in ["mean", "hot", "cold"], "Wrong parameter for weather_type! Must be on of 'mean', 'hot' or 'cold'"
     base_filepath = os.path.join(
-        tsib.data.PATH,
+        PATH,
         "weatherdata",
         "TRY",
         "TRY_2015"
@@ -166,7 +166,7 @@ def readTRY(try_num=4, year=2010, **kwargs):
     else:
         # get the correct file path
         filepath = os.path.join(
-            tsib.data.PATH,
+            PATH,
             "weatherdata",
             "TRY",
             "TRY" + str(year) + "_" + str(try_num).zfill(2) + "_Jahr",
@@ -308,7 +308,7 @@ def getISO12831weather(longitude, latitude, year=2010, cosmo=False):
 
     # read weather zones
     wzones = pd.read_csv(
-        os.path.join(tsib.data.PATH, "weatherdata", "ISO12831", "T_zones_Ger_final.csv"),
+        os.path.join(PATH, "weatherdata", "ISO12831", "T_zones_Ger_final.csv"),
         index_col=0,
         encoding="ISO-8859-1",
     )

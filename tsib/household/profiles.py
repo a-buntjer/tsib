@@ -263,7 +263,7 @@ def getHouseholdProfiles(
     if len(not_existing_profiles) > 1:
         new_profiles = simHouseholdsParallel(
             int(n_persons),
-            2010,
+            weather_data.index[0].year,
             len(not_existing_profiles),
             singleProfiles=True,
             weather_data=weather_data,
@@ -275,7 +275,7 @@ def getHouseholdProfiles(
     elif len(not_existing_profiles) > 0:
         one_profile = simSingleHousehold(
             int(n_persons),
-            2010,
+            weather_data.index[0].year,
             weather_data=weather_data,
             get_hot_water=True,
             resample_mean=mean_load,

@@ -15,7 +15,7 @@ def test_pvlib():
     starttime = time.time()
 
     # Run PV simulation with Pv_lib from Sandia (default values)
-    try_data, loc = tsib.readTRY()
+    try_data, loc = tsib.readTRY(year=2015)
     tmy_data = tsib.TRY2TMY(try_data)
 
     specific_load, space_coverage = tsib.simPhotovoltaic(tmy_data)

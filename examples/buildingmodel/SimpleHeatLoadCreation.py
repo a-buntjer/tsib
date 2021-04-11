@@ -25,9 +25,6 @@ import pandas as pd
 # %load_ext autoreload
 # %autoreload 2
 import tsib
-import tsib
-import tsib.buildingmanager as bm
-import tsib
 import tsib.thermal.utils as utils
 
 # %%
@@ -54,7 +51,7 @@ EXPORT_PATH = os.path.join('plots')
 bdgcfg = tsib.BuildingConfiguration({ 'refurbishment': False, 'nightReduction': True, 'buildingYear': 2005,
                                        'occControl': False, 'capControl': True,'n_persons': 2,
                                        'comfortT_lb': 20.0, 'comfortT_ub': 26.0, 'roofOrientation': 0.0,
-                                       'longitude': 7., 'latitude': 54. })
+                                       'longitude': 7., 'latitude': 54. , 'n_apartments': 1})
 
 # %%
 bdgObj = tsib.Building(configurator = bdgcfg)
@@ -63,7 +60,7 @@ bdgObj = tsib.Building(configurator = bdgcfg)
 # ## Get the load
 
 # %%
-bdgObj.get_load()
+bdgObj.getLoad()
 
 # %% [markdown]
 # Plot
